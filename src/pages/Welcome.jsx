@@ -1,12 +1,14 @@
 import React from 'react';
+import '../common.css';
 
-const Welcome = () => {
+function Welcome() {
   return (
-    <div className="welcome">
-      <h1>Welcome to Glory's Website!</h1>
-      <p>Enjoy the bright and cheerful experience!</p>
+    <div className="container text-center">
+      <h1>Welcome to the App</h1>
+      <p className="mt-1">This is the welcome page.</p>
+      <a href="/about" className="button">Learn More</a>
     </div>
   );
-};
+}
 
 export default Welcome;

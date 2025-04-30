@@ -1,12 +1,13 @@
 import React from 'react';
+import '../common.css';
 
-const About = () => {
+function About() {
   return (
-    <div className="about">
+    <div className="container">
       <h1>About Us</h1>
-      <p>This is a cheerful website created to spread joy and positivity!</p>
+      <p className="mt-1">We are a team dedicated to building great applications.</p>
     </div>
   );
-};
+}
 
 export default About;
