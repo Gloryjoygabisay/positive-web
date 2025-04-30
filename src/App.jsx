@@ -1,36 +1,10 @@
-import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
+import Welcome from './pages/Welcome';
+import About from './pages/About';
+import Counter from './pages/Counter';
 
-function Welcome() {
-  return (
-    <div className="welcome">
-      <h1>Welcome to Glory's Website!</h1>
-      <p>Enjoy the bright and cheerful experience!</p>
-    </div>
-  );
-}
-
-function About() {
-  return (
-    <div className="about">
-      <h1>About Us</h1>
-      <p>This is a cheerful website created to spread joy and positivity!</p>
-    </div>
-  );
-}
-
-function Counter() {
-  const [count, setCount] = useState(0);
-  return (
-    <div className="counter">
-      <h1>Counter Page</h1>
-      <button onClick={() => setCount(count + 1)}>Count is {count}</button>
-    </div>
-  );
-}
-
-function App() {
+const App = () => {
   return (
     <Router>
       <nav className="navbar">
@@ -45,6 +19,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
