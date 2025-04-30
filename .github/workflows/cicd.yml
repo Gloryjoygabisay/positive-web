@@ -1,0 +1,41 @@
+# build the react solution and test
+name: React CI/CD
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+
+# we need these permissions to deploy to github pages
+permissions:
+  id-token: write
+  pages: write
+  contents: read
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v4.1.7
+        - name: Use Node.js 23.x
+          uses: actions/setup-node@v4.3.0
+          with:
+            node-version: 23.x
+        - name: Install dependencies
+          run: npm install
+        - name: Build
+          run: npm run build
+        - name: upload pages artifact
+          uses:  actions/upload-pages-artifact@v3.0.1
+          with:
+            path: ${{ github.workspace }}/dist/
+        - name: deploy pages artifact
+          id: deploy-pages-artifact
+          uses: actions/deploy-pages@v4.0.5
+        - name: show deployed url
+          run: |
+            # show deployed URL for github pages
+            echo "📚 Deployed pages to ${{ steps.deploy-pages-artifact.outputs.page_url }}" | tee -a $GITHUB_STEP_SUMMARY
