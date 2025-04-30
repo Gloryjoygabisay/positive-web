@@ -1,24 +1,27 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Welcome from './pages/Welcome';
 import About from './pages/About';
 import Counter from './pages/Counter';
+import './App.css';
 
-const App = () => {
+function App() {
   return (
     <Router>
-      <nav className="navbar">
+      <div className="sidebar">
         <Link to="/">Welcome</Link>
         <Link to="/about">About</Link>
         <Link to="/counter">Counter</Link>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/counter" element={<Counter />} />
-      </Routes>
+      </div>
+      <div style={{ marginLeft: '250px', padding: '1rem' }}>
+        <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/counter" element={<Counter />} />
+        </Routes>
+      </div>
     </Router>
   );
-};
+}
 
 export default App;
