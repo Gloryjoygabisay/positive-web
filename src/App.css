@@ -25,7 +25,10 @@ body {
   box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5); /* Stronger shadow for suspense */
   display: flex;
   flex-direction: column;
+  justify-content: center; /* Align content to the center vertically */
+  align-items: center; /* Center horizontally */
   padding: 1rem;
+  padding-bottom: 2rem; /* Add spacing at the bottom */
   z-index: 1000;
   background-image: url('/src/assets/websiteimage.png');
   background-size: cover;
@@ -38,11 +41,12 @@ body {
   color: #fff;
   font-weight: bold;
   font-size: 1.2rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0; /* Adjust spacing between links */
+  text-align: center; /* Center text */
 }
 
 .sidebar a:hover {
-  color: #ff4500; /* Darker orange for hover effect */
+  color: #ffa500; /* Yellow-orange for hover effect */
 }
 
 .logo {
