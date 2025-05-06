@@ -145,5 +145,5 @@ button:hover {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-n  color: #dcdcdc; /* Softer white for text */
+  color: #dcdcdc; /* Softer white for text */
 }
