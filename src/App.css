@@ -89,7 +89,6 @@ body {
 
 .introduction {
   margin-top: 0.5rem; /* Further reduced spacing to move it slightly higher */
-  background-attachment: fixed; /* Fix the background to prevent movement */
 }
 
 .exploreStories, .favorites {
@@ -146,5 +145,5 @@ button:hover {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #dcdcdc; /* Softer white for text */
+n  color: #dcdcdc; /* Softer white for text */
 }
