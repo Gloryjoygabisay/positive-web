@@ -6,6 +6,7 @@ body {
   color: #e0e0e0; /* Softer white for text */
   margin: 0;
   padding: 0;
+  overflow-x: hidden; /* Disable horizontal scrolling */
 }
 
 #root {
