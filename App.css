@@ -1,0 +1,149 @@
+@import './common.css';
+
+body {
+  font-family: 'Gothic A1', sans-serif; /* Gothic font for a moody feel */
+  background-color: #222; /* Darker background for a more suspenseful atmosphere */
+  color: #e0e0e0; /* Softer white for text */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Disable horizontal scrolling */
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 300px;
+  background-color: #2a2a2a; /* Darker gray for sidebar */
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5); /* Stronger shadow for suspense */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Align content to the center */
+  align-items: center; /* Center horizontally */
+  padding: 1rem;
+  padding-bottom: 2rem; /* Add spacing at the bottom */
+  z-index: 1000;
+  background-image: url('/src/assets/websiteimage.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 2rem 0; /* Increased spacing */
+  text-align: center; /* Center text */
+}
+
+.sidebar a:first-of-type {
+  margin-top: -2rem; /* Move the first link higher */
+}
+
+.sidebar a:hover {
+  color: #ffa500; /* Yellow-orange for hover effect */
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+  filter: drop-shadow(0 0 3em #444); /* Subtle shadow for logos */
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.introduction {
+  margin-top: 0.5rem; /* Further reduced spacing to move it slightly higher */
+}
+
+.exploreStories, .favorites {
+  text-align: center;
+  margin-top: 3rem; /* Increased spacing */
+}
+
+.favorites {
+  margin-top: 2.5rem; /* Reduced spacing to move it slightly higher */
+}
+
+/* Adjusted placement under the moon image */
+.moon-image + .introduction, .moon-image + .exploreStories, .moon-image + .favorites {
+  margin-top: 2rem; /* Increased spacing */
+}
+
+button {
+  background-color: #444; /* Darker button background */
+  color: #fff; /* White text */
+  border: 1px solid #555; /* Border for a moody effect */
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #555; /* Slightly lighter hover effect */
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Responsive styles for the sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+    padding: 0.5rem;
+  }
+
+  .sidebar a {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+}
+
+/* Specific styles for the App component */
+.app-header {
+  background-color: #1a1a1a; /* Darker header background */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #dcdcdc; /* Softer white for text */
+}

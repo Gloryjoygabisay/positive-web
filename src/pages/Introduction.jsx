@@ -14,11 +14,19 @@ function Introduction() {
       display: 'flex', 
       flexDirection: 'column', 
       justifyContent: 'center', 
-      alignItems: 'center', 
+      alignItems: 'flex-end', 
     }}>
-      <div className="site-title">
+      <div className="site-title" style={{ 
+        textAlign: 'center', 
+        position: 'absolute', 
+        top: '10px', 
+        left: '50%', 
+        transform: 'translateX(-50%)', 
+        color: 'white', 
+        fontSize: '0.5rem', 
+        textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7)' 
+      }}>
         <h1>Dark Night Whispers</h1>
-        <p>by Glory</p>
       </div>
     </div>
   );
