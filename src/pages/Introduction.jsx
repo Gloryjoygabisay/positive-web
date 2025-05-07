@@ -42,7 +42,17 @@ function Introduction() {
           textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)',
           marginLeft: '20px', /* Adjusted margin to move paragraph to the right */
           textAlign: 'left' /* Changed text alignment to left */
-        }}>Don’t trust the quiet. In the dark, things stir — stories buried alive, footsteps without feet, laughter with no mouth. What you’re about to read wasn’t meant to be found. But since you’re here… step carefully. In Dark Night Whispers, the stories don’t end when the page does — they follow you.</p>
+        }}>Don’t trust the quiet. In the dark, things stir — stories buried alive, footsteps without feet, laughter with no mouth. What you’re about to read wasn’t meant to be found. But since you’re here… step carefully.</p>
+        <p style={{ 
+          marginTop: '15px', 
+          fontSize: '1rem', 
+          color: '#e0e0e0', 
+          lineHeight: '1.5', 
+          textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)',
+          marginLeft: '20px', /* Adjusted margin to move paragraph to the right */
+          textAlign: 'left', /* Changed text alignment to left */
+          fontStyle: 'italic' /* Italicized the text */
+        }}>In Dark Night Whispers, the stories don’t end when the page does — they follow you.</p>
       </div>
     </div>
   );
