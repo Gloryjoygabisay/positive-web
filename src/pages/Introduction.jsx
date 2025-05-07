@@ -19,8 +19,8 @@ function Introduction() {
       <div className="site-title" style={{ 
         textAlign: 'center', 
         position: 'absolute', 
-        top: '10%', /* Adjusted top position to move the title lower */
-        left: '50%', 
+        top: '10%', 
+        left: '57%', /* Adjusted left position to move the title slightly more to the right */
         transform: 'translateX(-50%)', 
         color: 'white', 
         fontSize: '0rem', 
