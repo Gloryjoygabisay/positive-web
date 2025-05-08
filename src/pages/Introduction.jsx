@@ -53,6 +53,14 @@ function Introduction() {
           textAlign: 'left', /* Changed text alignment to left */
           fontStyle: 'italic' /* Italicized the text */
         }}>In Dark Night Whispers, the stories don’t end when the page does — they follow you.</p>
+        <p className="byline" style={{ 
+          marginTop: '10px', 
+          fontSize: '1rem', 
+          color: '#dcdcdc', 
+          fontStyle: 'italic', 
+          textAlign: 'right', 
+          marginRight: '20px' 
+        }}>— by Glory</p>
       </div>
     </div>
   );
