@@ -56,12 +56,41 @@ function Introduction() {
         <p className="byline" style={{ 
           marginTop: '10px', 
           fontSize: '1rem', 
-          color: '#dcdcdc', 
+          color: '#ffcc00', /* Changed color to gold */ 
           fontStyle: 'italic', 
+          fontWeight: 'bold', /* Made text bold */ 
           textAlign: 'right', 
           marginRight: '20px' 
         }}>— by Glory</p>
       </div>
+      <div className="right-border" style={{ 
+        position: 'absolute', 
+        top: '0', 
+        right: '0', 
+        height: '100%', 
+        width: '10px', 
+        background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.7))' 
+      }}></div>
+      <div className="scary-finger" style={{ 
+        position: 'absolute', 
+        bottom: '10%', 
+        right: '10%', 
+        width: '50px', 
+        height: '100px', 
+        background: 'url(/src/assets/scary-finger.png) no-repeat center center', 
+        backgroundSize: 'contain', 
+        animation: 'scaryFingerAnimation 10s infinite' 
+      }}></div>
+
+      <style>
+        {`
+          @keyframes scaryFingerAnimation {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-20px); opacity: 0.5; }
+            100% { transform: translateY(0); opacity: 1; }
+          }
+        `}
+      </style>
     </div>
   );
 }
