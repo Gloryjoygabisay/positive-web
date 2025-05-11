@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+// 1. Import a markdown parser. We'll use react-markdown for easy rendering.
+import ReactMarkdown from 'react-markdown';
 
 // 1. Array of story ideas
 const storyIdeas = [
@@ -55,6 +57,25 @@ const storyIdeas = [
 ];
 
 function ExploreStories() {
+  // 2. State to track selected story and its markdown content
+  const [selectedStory, setSelectedStory] = useState(null);
+  const [storyContent, setStoryContent] = useState('');
+
+  // 3. Function to handle clicking a story tile
+  const handleStoryClick = async (story) => {
+    setSelectedStory(story);
+    // Fetch the markdown file from the public folder
+    try {
+      // The path is relative to the public folder in Vite. Adjust if needed.
+      const response = await fetch(`/src/assets/stories/${story.filename}`);
+      if (!response.ok) throw new Error('Story not found');
+      const text = await response.text();
+      setStoryContent(text);
+    } catch (error) {
+      setStoryContent('Sorry, this story could not be loaded.');
+    }
+  };
+
   return (
     <div className="exploreStories">
       <div className="scrollable-section">
@@ -63,12 +84,24 @@ function ExploreStories() {
         {/* 2. Tile layout for stories */}
         <div className="story-tiles">
           {storyIdeas.map((story, idx) => (
-            <div className="story-tile" key={idx}>
+            <div
+              className="story-tile"
+              key={idx}
+              onClick={() => handleStoryClick(story)}
+              style={{ cursor: 'pointer', border: selectedStory?.filename === story.filename ? '2px solid #007bff' : '1px solid #ccc' }}
+            >
               <h2>{story.title}</h2>
               <p>{story.description}</p>
             </div>
           ))}
         </div>
+        {/* 4. Display the markdown content if a story is selected */}
+        {selectedStory && (
+          <div className="story-content" style={{ marginTop: '2rem', background: '#fff', padding: '1rem', borderRadius: '8px' }}>
+            <h2>{selectedStory.title}</h2>
+            <ReactMarkdown>{storyContent}</ReactMarkdown>
+          </div>
+        )}
       </div>
     </div>
   );
