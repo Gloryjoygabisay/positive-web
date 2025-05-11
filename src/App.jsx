@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Introduction from './pages/Introduction';
 import ExploreStories from './pages/ExploreStories';
 import Favorites from './pages/Favorites';
@@ -15,6 +15,7 @@ function App() {
       </div>
       <div style={{ marginLeft: '250px', padding: '1rem' }}>
         <Routes>
+          <Route path="/" element={<Introduction />} />
           <Route path="/introduction" element={<Introduction />} />
           <Route path="/explorestories" element={<ExploreStories />} />
           <Route path="/favorites" element={<Favorites />} />
