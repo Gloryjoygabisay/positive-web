@@ -1,3 +1,6 @@
+@import './common.css';
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Lora:ital,wght@1,400&display=swap');
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -28,11 +31,17 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden; /* Disable horizontal scrolling */
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+/* Adding a shadow effect to the font to match the background */
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 button {
@@ -52,6 +61,100 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background-attachment: fixed;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-title {
+  text-align: left; /* Align to the left */
+  margin-top: 0; /* Align at the top */
+  position: relative; /* Ensure it stays at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.site-title h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 4rem;
+  color: transparent;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0 0 10px rgba(255, 255, 255, 0.8);
+  animation: glow 2s infinite alternate;
+  margin-bottom: 10px; /* Add spacing for 'glory' below */
+}
+
+.site-title p {
+  font-family: 'Lora', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-top: 5px;
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.site-title .glory {
+  font-family: 'Lora', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 5px;
+}
+
+.introduction {
+  background-attachment: fixed; /* Prevent background from moving during scroll */
+}
+
+/* Added styles for the introduction heading */
+.introduction-heading {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 5rem; /* Larger font size for prominence */
+  text-align: center;
+  color: transparent; /* Make the text transparent */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), /* Subtle shadow */
+               0 0 10px rgba(255, 255, 255, 0.8), /* Glow effect */
+               0 0 20px rgba(255, 255, 255, 0.6); /* Extended glow */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the text */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* Added styles for the welcome message to match the introduction heading */
+.welcome-message {
+  font-family: 'Lora', serif;
+  font-size: 1.8rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5), /* Subtle shadow */
+               0 0 10px rgba(255, 255, 255, 0.8), /* Glow effect */
+               0 0 20px rgba(255, 255, 255, 0.6); /* Extended glow */
+  margin: 0 20px 40px; /* Add spacing around the text */
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0 0 10px rgba(255, 255, 255, 0.8);
+  }
+  to {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 255, 255, 1);
+  }
 }
 
 @media (prefers-color-scheme: light) {

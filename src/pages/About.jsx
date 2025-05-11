@@ -1,0 +1,1 @@
+// Removed the About component as requested.

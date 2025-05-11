@@ -1,0 +1,1 @@
+// Removed the Welcome component as requested.
