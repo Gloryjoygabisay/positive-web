@@ -62,6 +62,8 @@ function ExploreStories() {
   const [storyContent, setStoryContent] = useState('');
   // State to control showing the stories list
   const [showStoriesList, setShowStoriesList] = useState(false);
+  // State to control showing the story modal
+  const [showModal, setShowModal] = useState(false);
 
   // 3. Function to handle clicking a story tile
   const handleStoryClick = async (story) => {
@@ -73,10 +75,15 @@ function ExploreStories() {
       if (!response.ok) throw new Error('Story not found');
       const text = await response.text();
       setStoryContent(text);
+      setShowModal(true); // Show the modal when a story is clicked
     } catch (error) {
       setStoryContent('Sorry, this story could not be loaded.');
+      setShowModal(true);
     }
   };
+
+  // Function to close the modal
+  const closeModal = () => setShowModal(false);
 
   return (
     <div className="exploreStories">
@@ -131,11 +138,62 @@ function ExploreStories() {
             </div>
           ))}
         </div>
-        {/* 4. Display the markdown content if a story is selected */}
-        {selectedStory && (
-          <div className="story-content" style={{ marginTop: '2rem', background: '#fff', padding: '1rem', borderRadius: '8px' }}>
-            <h2>{selectedStory.title}</h2>
-            <ReactMarkdown>{storyContent}</ReactMarkdown>
+        {/* Modal for displaying the full story */}
+        {showModal && (
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            background: 'rgba(0,0,0,0.92)', // Make overlay darker for full focus
+            display: 'flex',
+            alignItems: 'stretch', // Stretch modal to full height
+            justifyContent: 'center',
+            zIndex: 1000,
+          }}>
+            <div style={{
+              background: '#fff',
+              borderRadius: 0, // Remove border radius for fullscreen
+              width: '100vw',
+              height: '100vh',
+              maxWidth: '100vw',
+              maxHeight: '100vh',
+              overflowY: 'auto',
+              padding: '2.5rem 1.2rem 1.2rem 1.2rem',
+              position: 'relative',
+              boxShadow: 'none',
+              color: '#2d2d2d',
+              fontFamily: 'Georgia, serif',
+              fontSize: '1.08rem',
+              lineHeight: 1.7,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+            }}>
+              <button
+                onClick={closeModal}
+                style={{
+                  position: 'absolute',
+                  top: '18px',
+                  right: '22px',
+                  background: 'transparent',
+                  border: 'none',
+                  fontSize: '2.2rem',
+                  cursor: 'pointer',
+                  color: '#333',
+                  zIndex: 10,
+                }}
+                aria-label="Close"
+              >
+                &times;
+              </button>
+              <h2 style={{marginTop: 0, marginBottom: '1.2rem', fontSize: '2rem', textAlign: 'center'}}>{selectedStory?.title}</h2>
+              <div style={{width: '100%', maxWidth: 600}}>
+                <ReactMarkdown>{storyContent}</ReactMarkdown>
+              </div>
+            </div>
           </div>
         )}
       </div>
