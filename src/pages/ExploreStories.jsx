@@ -79,8 +79,26 @@ function ExploreStories() {
   return (
     <div className="exploreStories">
       <div className="scrollable-section">
-        <h1>Explore Stories</h1>
-        <p>Discover a variety of stories curated just for you.</p>
+        {/* Changed heading title */}
+        <h1>Voices from the Shadows</h1>
+        {/* Search bar below the heading title */}
+        <input
+          type="text"
+          placeholder="Search stories..."
+          style={{
+            width: '70%', // Make the search bar shorter for mobile
+            maxWidth: '350px', // Prevent it from being too wide on desktop
+            display: 'block',
+            margin: '1rem auto', // Center horizontally
+            padding: '0.5rem 1rem', // Less vertical padding, keep horizontal for comfort
+            fontSize: '1rem',
+            borderRadius: '6px',
+            border: '1px solid #ccc',
+            boxSizing: 'border-box',
+          }}
+        />
+        {/* New description for Voices from the Shadows */}
+        <p>Step quietly—these tales weren’t meant to be heard, but now their whispers are reaching you.</p>
         {/* 2. Tile layout for stories */}
         <div className="story-tiles">
           {storyIdeas.map((story, idx) => (
