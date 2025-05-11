@@ -60,6 +60,8 @@ function ExploreStories() {
   // 2. State to track selected story and its markdown content
   const [selectedStory, setSelectedStory] = useState(null);
   const [storyContent, setStoryContent] = useState('');
+  // State to control showing the stories list
+  const [showStoriesList, setShowStoriesList] = useState(false);
 
   // 3. Function to handle clicking a story tile
   const handleStoryClick = async (story) => {
@@ -81,7 +83,9 @@ function ExploreStories() {
       <div className="scrollable-section">
         {/* Changed heading title */}
         <h1>Voices from the Shadows</h1>
-        {/* Search bar below the heading title */}
+        {/* New description for Voices from the Shadows */}
+        <p>Step quietly—these tales weren’t meant to be heard, but now their whispers are reaching you.</p>
+        {/* Search bar below the description */}
         <input
           type="text"
           placeholder="Search stories..."
@@ -97,8 +101,22 @@ function ExploreStories() {
             boxSizing: 'border-box',
           }}
         />
-        {/* New description for Voices from the Shadows */}
-        <p>Step quietly—these tales weren’t meant to be heard, but now their whispers are reaching you.</p>
+        {/* Show the list of story titles when the button is clicked, centered */}
+        {showStoriesList && (
+          <ul style={{
+            listStyle: 'disc inside',
+            margin: '0 0 1rem 0',
+            padding: 0,
+            fontSize: '1.05rem',
+            color: '#222',
+            textAlign: 'center',
+            display: 'block',
+          }}>
+            {storyIdeas.map((story, idx) => (
+              <li key={idx} style={{ marginBottom: '0.5rem', display: 'inline-block', width: '100%', textAlign: 'center' }}>{story.title}</li>
+            ))}
+          </ul>
+        )}
         {/* 2. Tile layout for stories */}
         <div className="story-tiles">
           {storyIdeas.map((story, idx) => (
