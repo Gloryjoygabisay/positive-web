@@ -64,6 +64,9 @@ function ExploreStories() {
   const [showStoriesList, setShowStoriesList] = useState(false);
   // State to control showing the story modal
   const [showModal, setShowModal] = useState(false);
+  // Add state for paginated story
+  const [storyPages, setStoryPages] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
 
   // 3. Function to handle clicking a story tile
   const handleStoryClick = async (story) => {
@@ -74,10 +77,14 @@ function ExploreStories() {
       const response = await fetch(`/src/assets/stories/${story.filename}`);
       if (!response.ok) throw new Error('Story not found');
       const text = await response.text();
-      setStoryContent(text);
+      // Split the story into pages using the ---pagebreak--- marker
+      const pages = text.split(/---pagebreak---/g).map(p => p.trim()).filter(Boolean);
+      setStoryPages(pages);
+      setCurrentPage(0);
       setShowModal(true); // Show the modal when a story is clicked
     } catch (error) {
-      setStoryContent('Sorry, this story could not be loaded.');
+      setStoryPages(['Sorry, this story could not be loaded.']);
+      setCurrentPage(0);
       setShowModal(true);
     }
   };
@@ -146,15 +153,15 @@ function ExploreStories() {
             left: 0,
             width: '100vw',
             height: '100vh',
-            background: 'rgba(0,0,0,0.92)', // Make overlay darker for full focus
+            background: 'linear-gradient(135deg, #f9fafb 60%, #e3e8ee 100%)', // Brighter, soft gradient
             display: 'flex',
-            alignItems: 'stretch', // Stretch modal to full height
+            alignItems: 'stretch',
             justifyContent: 'center',
             zIndex: 1000,
           }}>
             <div style={{
               background: '#fff',
-              borderRadius: 0, // Remove border radius for fullscreen
+              borderRadius: 16,
               width: '100vw',
               height: '100vh',
               maxWidth: '100vw',
@@ -162,15 +169,16 @@ function ExploreStories() {
               overflowY: 'auto',
               padding: '2.5rem 1.2rem 1.2rem 1.2rem',
               position: 'relative',
-              boxShadow: 'none',
-              color: '#2d2d2d',
-              fontFamily: 'Georgia, serif',
-              fontSize: '1.08rem',
-              lineHeight: 1.7,
+              boxShadow: '0 4px 32px rgba(0,0,0,0.10)',
+              color: '#23272f', // Even more readable, slightly deeper
+              fontFamily: 'Georgia, Times New Roman, serif',
+              fontSize: '1.13rem',
+              lineHeight: 1.8,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'flex-start',
+              letterSpacing: '0.01em',
             }}>
               <button
                 onClick={closeModal}
@@ -189,9 +197,56 @@ function ExploreStories() {
               >
                 &times;
               </button>
-              <h2 style={{marginTop: 0, marginBottom: '1.2rem', fontSize: '2rem', textAlign: 'center'}}>{selectedStory?.title}</h2>
+              <h2 style={{marginTop: 0, marginBottom: '1.2rem', fontSize: '2rem', textAlign: 'center', color: '#1a1a1a', fontWeight: 700}}>{selectedStory?.title}</h2>
               <div style={{width: '100%', maxWidth: 600}}>
-                <ReactMarkdown>{storyContent}</ReactMarkdown>
+                {/* Show the current page of the story */}
+                <ReactMarkdown
+                  components={{
+                    strong: ({node, ...props}) => <strong style={{color: '#1a1a1a'}} {...props} />,
+                    p: ({node, ...props}) => <p style={{margin: '1.1em 0'}} {...props} />,
+                    li: ({node, ...props}) => <li style={{margin: '0.5em 0'}} {...props} />,
+                  }}
+                >{storyPages[currentPage]}</ReactMarkdown>
+                {/* Pagination controls */}
+                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2rem'}}>
+                  <button
+                    onClick={() => setCurrentPage(p => Math.max(0, p - 1))}
+                    disabled={currentPage === 0}
+                    style={{
+                      padding: '0.5rem 1.2rem',
+                      fontSize: '1rem',
+                      borderRadius: '6px',
+                      border: 'none',
+                      background: currentPage === 0 ? '#e3e8ee' : '#333',
+                      color: currentPage === 0 ? '#aaa' : '#fff',
+                      fontWeight: 'bold',
+                      cursor: currentPage === 0 ? 'not-allowed' : 'pointer',
+                      marginRight: '1rem',
+                    }}
+                  >
+                    Previous
+                  </button>
+                  <span style={{fontSize: '1rem', color: '#555'}}>
+                    Page {currentPage + 1} of {storyPages.length}
+                  </span>
+                  <button
+                    onClick={() => setCurrentPage(p => Math.min(storyPages.length - 1, p + 1))}
+                    disabled={currentPage === storyPages.length - 1}
+                    style={{
+                      padding: '0.5rem 1.2rem',
+                      fontSize: '1rem',
+                      borderRadius: '6px',
+                      border: 'none',
+                      background: currentPage === storyPages.length - 1 ? '#e3e8ee' : '#333',
+                      color: currentPage === storyPages.length - 1 ? '#aaa' : '#fff',
+                      fontWeight: 'bold',
+                      cursor: currentPage === storyPages.length - 1 ? 'not-allowed' : 'pointer',
+                      marginLeft: '1rem',
+                    }}
+                  >
+                    Next
+                  </button>
+                </div>
               </div>
             </div>
           </div>
