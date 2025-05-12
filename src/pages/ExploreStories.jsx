@@ -153,32 +153,23 @@ function ExploreStories() {
             left: 0,
             width: '100vw',
             height: '100vh',
-            background: 'linear-gradient(135deg, #f9fafb 60%, #e3e8ee 100%)', // Brighter, soft gradient
+            background: 'linear-gradient(135deg, #1a1a1a 80%, #23272f 100%)', // darker for contrast
             display: 'flex',
             alignItems: 'stretch',
             justifyContent: 'center',
             zIndex: 1000,
           }}>
-            <div style={{
-              background: '#fff',
-              borderRadius: 16,
+            <div className="story-content" style={{
               width: '100vw',
               height: '100vh',
               maxWidth: '100vw',
               maxHeight: '100vh',
               overflowY: 'auto',
-              padding: '2.5rem 1.2rem 1.2rem 1.2rem',
               position: 'relative',
-              boxShadow: '0 4px 32px rgba(0,0,0,0.10)',
-              color: '#23272f', // Even more readable, slightly deeper
-              fontFamily: 'Georgia, Times New Roman, serif',
-              fontSize: '1.13rem',
-              lineHeight: 1.8,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'flex-start',
-              letterSpacing: '0.01em',
             }}>
               <button
                 onClick={closeModal}
@@ -190,21 +181,21 @@ function ExploreStories() {
                   border: 'none',
                   fontSize: '2.2rem',
                   cursor: 'pointer',
-                  color: '#333',
+                  color: '#ffd580',
                   zIndex: 10,
                 }}
                 aria-label="Close"
               >
                 &times;
               </button>
-              <h2 style={{marginTop: 0, marginBottom: '1.2rem', fontSize: '2rem', textAlign: 'center', color: '#1a1a1a', fontWeight: 700}}>{selectedStory?.title}</h2>
+              <h2 style={{marginTop: 0, marginBottom: '1.2rem', fontSize: '2rem', textAlign: 'center', color: '#ffd580', fontWeight: 700}}>{selectedStory?.title}</h2>
               <div style={{width: '100%', maxWidth: 600}}>
                 {/* Show the current page of the story */}
                 <ReactMarkdown
                   components={{
-                    strong: ({node, ...props}) => <strong style={{color: '#1a1a1a'}} {...props} />,
-                    p: ({node, ...props}) => <p style={{margin: '1.1em 0'}} {...props} />,
-                    li: ({node, ...props}) => <li style={{margin: '0.5em 0'}} {...props} />,
+                    strong: ({node, ...props}) => <strong {...props} />,
+                    p: ({node, ...props}) => <p {...props} />,
+                    li: ({node, ...props}) => <li {...props} />,
                   }}
                 >{storyPages[currentPage]}</ReactMarkdown>
                 {/* Pagination controls */}
@@ -226,7 +217,7 @@ function ExploreStories() {
                   >
                     Previous
                   </button>
-                  <span style={{fontSize: '1rem', color: '#555'}}>
+                  <span style={{fontSize: '1rem', color: '#ffd580'}}>
                     Page {currentPage + 1} of {storyPages.length}
                   </span>
                   <button
