@@ -188,7 +188,23 @@ function ExploreStories() {
               >
                 &times;
               </button>
-              <h2 style={{marginTop: 0, marginBottom: '1.2rem', fontSize: '2rem', textAlign: 'center', color: '#ffd580', fontWeight: 700}}>{selectedStory?.title}</h2>
+              {/* Custom heading and image for The Lantern Keeper */}
+              {selectedStory?.filename === "the-lantern-keeper.md" && (
+                <>
+                  <h2 style={{marginTop: 0, marginBottom: '1.2rem', fontSize: '2rem', textAlign: 'center', color: '#ffd580', fontWeight: 700}}>{selectedStory?.title}</h2>
+                  <div style={{ width: '100%', display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+                    <img
+                      src="/ldescrptionimage.png"
+                      alt="The Lantern Keeper"
+                      style={{ maxWidth: '320px', width: '90vw', height: 'auto', display: 'block', margin: '0 auto', borderRadius: '12px' }}
+                    />
+                  </div>
+                </>
+              )}
+              {/* Only show the default heading for other stories */}
+              {selectedStory?.filename !== "the-lantern-keeper.md" && (
+                <h2 style={{marginTop: 0, marginBottom: '1.2rem', fontSize: '2rem', textAlign: 'center', color: '#ffd580', fontWeight: 700}}>{selectedStory?.title}</h2>
+              )}
               <div style={{width: '100%', maxWidth: 600}}>
                 {/* Show the current page of the story */}
                 <ReactMarkdown
