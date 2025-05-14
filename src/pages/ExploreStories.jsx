@@ -76,7 +76,12 @@ function ExploreStories() {
       // The path is relative to the public folder in Vite. Adjust if needed.
       const response = await fetch(`/src/assets/stories/${story.filename}`);
       if (!response.ok) throw new Error('Story not found');
-      const text = await response.text();
+      let text = await response.text();
+      // Remove the first heading for The Lantern Keeper
+      if (story.filename === "the-lantern-keeper.md") {
+        // Remove the first line if it starts with '# '
+        text = text.replace(/^# .+\n/, '');
+      }
       // Split the story into pages using the ---pagebreak--- marker
       const pages = text.split(/---pagebreak---/g).map(p => p.trim()).filter(Boolean);
       setStoryPages(pages);
@@ -188,20 +193,16 @@ function ExploreStories() {
               >
                 &times;
               </button>
-              {/* Custom heading and image for The Lantern Keeper */}
+              {/* Only show the image for 'The Lantern Keeper' */}
               {selectedStory?.filename === "the-lantern-keeper.md" && (
-                <>
-                  <h2 style={{marginTop: 0, marginBottom: '1.2rem', fontSize: '2rem', textAlign: 'center', color: '#ffd580', fontWeight: 700}}>{selectedStory?.title}</h2>
-                  <div style={{ width: '100%', display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
-                    <img
-                      src="/ldescrptionimage.png"
-                      alt="The Lantern Keeper"
-                      style={{ maxWidth: '320px', width: '90vw', height: 'auto', display: 'block', margin: '0 auto', borderRadius: '12px' }}
-                    />
-                  </div>
-                </>
+                <div style={{ width: '100%', display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+                  <img
+                    src="/ldescrptionimage.png"
+                    alt="The Lantern Keeper"
+                    style={{ maxWidth: '320px', width: '90vw', height: 'auto', display: 'block', margin: '0 auto', borderRadius: '12px' }}
+                  />
+                </div>
               )}
-              {/* Only show the default heading for other stories */}
               {selectedStory?.filename !== "the-lantern-keeper.md" && (
                 <h2 style={{marginTop: 0, marginBottom: '1.2rem', fontSize: '2rem', textAlign: 'center', color: '#ffd580', fontWeight: 700}}>{selectedStory?.title}</h2>
               )}
