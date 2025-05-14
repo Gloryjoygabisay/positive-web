@@ -193,8 +193,8 @@ function ExploreStories() {
               >
                 &times;
               </button>
-              {/* Only show the image for 'The Lantern Keeper' */}
-              {selectedStory?.filename === "the-lantern-keeper.md" && (
+              {/* Only show the image for 'The Lantern Keeper' on the first page */}
+              {selectedStory?.filename === "the-lantern-keeper.md" && currentPage === 0 && (
                 <div style={{ width: '100%', display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
                   <img
                     src="/ldescrptionimage.png"
