@@ -67,6 +67,8 @@ function ExploreStories() {
   // Add state for paginated story
   const [storyPages, setStoryPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+  // State for search query
+  const [searchQuery, setSearchQuery] = useState('');
 
   // 3. Function to handle clicking a story tile
   const handleStoryClick = async (story) => {
@@ -97,6 +99,11 @@ function ExploreStories() {
   // Function to close the modal
   const closeModal = () => setShowModal(false);
 
+  // Filter stories based on search query
+  const filteredStories = storyIdeas.filter(story =>
+    story.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="exploreStories">
       <div className="scrollable-section">
@@ -108,6 +115,8 @@ function ExploreStories() {
         <input
           type="text"
           placeholder="Search stories..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
           style={{
             width: '70%', // Make the search bar shorter for mobile
             maxWidth: '350px', // Prevent it from being too wide on desktop
@@ -131,14 +140,18 @@ function ExploreStories() {
             textAlign: 'center',
             display: 'block',
           }}>
-            {storyIdeas.map((story, idx) => (
-              <li key={idx} style={{ marginBottom: '0.5rem', display: 'inline-block', width: '100%', textAlign: 'center' }}>{story.title}</li>
-            ))}
+            {filteredStories.length > 0 ? (
+              filteredStories.map((story, idx) => (
+                <li key={idx} style={{ marginBottom: '0.5rem', display: 'inline-block', width: '100%', textAlign: 'center' }}>{story.title}</li>
+              ))
+            ) : (
+              <li style={{ color: 'gray', fontStyle: 'italic' }}>No stories found</li>
+            )}
           </ul>
         )}
         {/* 2. Tile layout for stories */}
         <div className="story-tiles">
-          {storyIdeas.map((story, idx) => (
+          {filteredStories.map((story, idx) => (
             <div
               className="story-tile"
               key={idx}
