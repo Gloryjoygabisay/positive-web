@@ -84,12 +84,12 @@ function ExploreStories() {
         text = text.replace(/^# .+\n/, ''); // Remove the first heading
       }
 
-      // Split the story into pages using the ---pagebreak--- marker
-      const pages = text.split(/---pagebreak---/g).map(p => p.trim()).filter(Boolean);
+      // Split the story into pages by detecting '**Prologue**' or '**Chapter X**' markers
+      const pages = text.split(/(?=\*\*.*?\*\*)/g).map(p => p.trim()).filter(Boolean);
 
-      // Extract chapter titles for 'The Lantern Keeper'
+      // Extract chapter titles for each page
       const chapters = pages.map(page => {
-        const match = page.match(/^##\s*(.+)/); // Look for '## Chapter Title'
+        const match = page.match(/\*\*([^*]+)\*\*/); // Look for '**Title**'
         return match ? match[1] : null;
       });
 
