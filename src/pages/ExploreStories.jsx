@@ -218,12 +218,14 @@ function ExploreStories() {
               {selectedStory?.filename === "the-lantern-keeper.md" && currentPage === 0 && (
                 <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '1.5rem 0' }}>
                   <h2 style={{
-                    color: '#ffd580',
-                    fontSize: '1.8rem',
-                    marginBottom: '1rem',
+                    color: '#ffcc00', // Updated to a brighter gold color
+                    fontSize: '3rem', // Increased font size for emphasis
+                    marginBottom: '1.5rem', // Added more spacing below
                     textAlign: 'center',
                     fontWeight: 'bold',
-                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
+                    fontFamily: 'Cinzel Decorative, serif', // Changed to a decorative serif font
+                    textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9)', // Enhanced shadow for depth
+                    letterSpacing: '0.15rem', // Increased spacing for elegance
                   }}>
                     The Lantern Keeper
                   </h2>
