@@ -69,26 +69,34 @@ function ExploreStories() {
   const [currentPage, setCurrentPage] = useState(0);
   // State for search query
   const [searchQuery, setSearchQuery] = useState('');
+  // State for chapter titles
+  const [chapterTitles, setChapterTitles] = useState([]);
 
   // 3. Function to handle clicking a story tile
   const handleStoryClick = async (story) => {
     setSelectedStory(story);
-    // Fetch the markdown file from the public folder
     try {
-      // The path is relative to the public folder in Vite. Adjust if needed.
       const response = await fetch(`/src/assets/stories/${story.filename}`);
       if (!response.ok) throw new Error('Story not found');
       let text = await response.text();
-      // Remove the first heading for The Lantern Keeper
+
       if (story.filename === "the-lantern-keeper.md") {
-        // Remove the first line if it starts with '# '
-        text = text.replace(/^# .+\n/, '');
+        text = text.replace(/^# .+\n/, ''); // Remove the first heading
       }
+
       // Split the story into pages using the ---pagebreak--- marker
       const pages = text.split(/---pagebreak---/g).map(p => p.trim()).filter(Boolean);
+
+      // Extract chapter titles for 'The Lantern Keeper'
+      const chapters = pages.map(page => {
+        const match = page.match(/^##\s*(.+)/); // Look for '## Chapter Title'
+        return match ? match[1] : null;
+      });
+
       setStoryPages(pages);
       setCurrentPage(0);
-      setShowModal(true); // Show the modal when a story is clicked
+      setShowModal(true);
+      setChapterTitles(chapters); // Save chapter titles in state
     } catch (error) {
       setStoryPages(['Sorry, this story could not be loaded.']);
       setCurrentPage(0);
@@ -208,7 +216,17 @@ function ExploreStories() {
               </button>
               {/* Only show the image for 'The Lantern Keeper' on the first page */}
               {selectedStory?.filename === "the-lantern-keeper.md" && currentPage === 0 && (
-                <div style={{ width: '100%', display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+                <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '1.5rem 0' }}>
+                  <h2 style={{
+                    color: '#ffd580',
+                    fontSize: '1.8rem',
+                    marginBottom: '1rem',
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
+                  }}>
+                    The Lantern Keeper
+                  </h2>
                   <img
                     src="/flickering_lantern.gif"
                     alt="Flickering Lantern"
@@ -216,8 +234,18 @@ function ExploreStories() {
                   />
                 </div>
               )}
-              {selectedStory?.filename !== "the-lantern-keeper.md" && (
-                <h2 style={{marginTop: 0, marginBottom: '1.2rem', fontSize: '2rem', textAlign: 'center', color: '#ffd580', fontWeight: 700}}>{selectedStory?.title}</h2>
+              {chapterTitles[currentPage] && (
+                <h2 style={{
+                  marginTop: '1rem',
+                  marginBottom: '1.2rem',
+                  fontSize: '1.8rem',
+                  textAlign: 'center',
+                  color: '#ffd580', // Bright color for visibility
+                  fontWeight: 700,
+                  textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)', // Add shadow for better contrast
+                }}>
+                  {chapterTitles[currentPage]}
+                </h2>
               )}
               <div style={{width: '100%', maxWidth: 600}}>
                 {/* Show the current page of the story */}
@@ -232,16 +260,16 @@ function ExploreStories() {
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2rem'}}>
                   <button
                     onClick={() => setCurrentPage(p => Math.max(0, p - 1))}
-                    disabled={currentPage === 0}
+                    disabled={currentPage <= 0} // Ensure 'Previous' is disabled only on the first page
                     style={{
                       padding: '0.5rem 1.2rem',
                       fontSize: '1rem',
                       borderRadius: '6px',
                       border: 'none',
-                      background: currentPage === 0 ? '#e3e8ee' : '#333',
-                      color: currentPage === 0 ? '#aaa' : '#fff',
+                      background: currentPage <= 0 ? '#e3e8ee' : '#333',
+                      color: currentPage <= 0 ? '#aaa' : '#fff',
                       fontWeight: 'bold',
-                      cursor: currentPage === 0 ? 'not-allowed' : 'pointer',
+                      cursor: currentPage <= 0 ? 'not-allowed' : 'pointer',
                       marginRight: '1rem',
                     }}
                   >
@@ -252,16 +280,16 @@ function ExploreStories() {
                   </span>
                   <button
                     onClick={() => setCurrentPage(p => Math.min(storyPages.length - 1, p + 1))}
-                    disabled={currentPage === storyPages.length - 1}
+                    disabled={currentPage >= storyPages.length - 1} // Ensure 'Next' is disabled only on the last page
                     style={{
                       padding: '0.5rem 1.2rem',
                       fontSize: '1rem',
                       borderRadius: '6px',
                       border: 'none',
-                      background: currentPage === storyPages.length - 1 ? '#e3e8ee' : '#333',
-                      color: currentPage === storyPages.length - 1 ? '#aaa' : '#fff',
+                      background: currentPage >= storyPages.length - 1 ? '#e3e8ee' : '#333',
+                      color: currentPage >= storyPages.length - 1 ? '#aaa' : '#fff',
                       fontWeight: 'bold',
-                      cursor: currentPage === storyPages.length - 1 ? 'not-allowed' : 'pointer',
+                      cursor: currentPage >= storyPages.length - 1 ? 'not-allowed' : 'pointer',
                       marginLeft: '1rem',
                     }}
                   >
