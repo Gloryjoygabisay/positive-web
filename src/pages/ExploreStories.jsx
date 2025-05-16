@@ -82,6 +82,7 @@ function ExploreStories() {
 
       if (story.filename === "the-lantern-keeper.md") {
         text = text.replace(/^# .+\n/, ''); // Remove the first heading
+        text = text.replace(/\*\*Prologue:.*?\*\*|\*\*Chapter \d+:.*?\*\*/g, ''); // Remove subtitles like Prologue and Chapter titles
       }
 
       // Split the story into pages by detecting '**Prologue**' or '**Chapter X**' markers
@@ -240,7 +241,7 @@ function ExploreStories() {
                 <h2 style={{
                   marginTop: '1rem',
                   marginBottom: '1.2rem',
-                  fontSize: '1.8rem',
+                  fontSize: '100%', // Adjusted font size to 100%
                   textAlign: 'center',
                   color: '#ffd580', // Bright color for visibility
                   fontWeight: 700,
@@ -253,6 +254,21 @@ function ExploreStories() {
                 {/* Show the current page of the story */}
                 <ReactMarkdown
                   components={{
+                    h2: ({ node, ...props }) => (
+                      <h2
+                        {...props}
+                        style={{
+                          color: '#ffd580', // Bright color for visibility
+                          fontFamily: 'Cinzel Decorative, serif',
+                          fontSize: '100%', // Adjusted font size to 100%
+                          fontWeight: 400, // Lowered font weight
+                          marginTop: '1em',
+                          marginBottom: '0.5em',
+                          textShadow: '1px 1px 4px rgba(0,0,0,0.5)', // Subtle shadow for contrast
+                          textAlign: 'center',
+                        }}
+                      />
+                    ),
                     strong: ({node, ...props}) => <strong {...props} />,
                     p: ({node, ...props}) => <p {...props} />,
                     li: ({node, ...props}) => <li {...props} />,

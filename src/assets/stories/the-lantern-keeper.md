@@ -2,9 +2,9 @@
 
 Every night at 3:33 AM, a flickering lantern appears in the woods near town. Those who follow it never return—but their whispers do.
 
-⸻
+---
 
-**Prologue: Whispers in the Dark**
+# Prologue: Whispers in the Dark
 
 They say it began long ago, back when the town of Black Hollow was just a scattering of cabins along the river. No one remembers the exact year—only that it started with the sound of footsteps. Soft. Slow. Steady. And always accompanied by the swaying glow of a lantern drifting through the trees.
 
@@ -12,9 +12,9 @@ The legend grew with each generation. Some claimed the lantern was a warning. Ot
 
 And yet, every night at exactly 3:33 AM… it returns.
 
-⸻
+---
 
-**Chapter 1: The Light in the Trees**
+# Chapter 1: The Light in the Trees
 
 Seventeen-year-old Lina Harrow had grown up hearing the stories. Her grandmother used to whisper them like prayers, warning her never to look outside after midnight.
 
@@ -38,9 +38,9 @@ When she dared to look again, the lantern was gone.
 
 In its place, she found a small, soot-stained feather resting on her windowsill.
 
-⸻
+---
 
-**Chapter 2: The Dare**
+# Chapter 2: The Dare
 
 The next day at school, Lina told her best friend, Jamie. He laughed it off.
 
@@ -56,6 +56,10 @@ So she did.
 
 She set her alarm for 3:25 AM. Dressed in layers. Grabbed her phone. Slipped silently out the back door.
 
+---
+
+# Chapter 3: The Lantern’s Call
+
 At the edge of the woods, she waited.
 
 The world held its breath.
@@ -68,9 +72,9 @@ And the whisper.
 
 Against every instinct, she followed.
 
-⸻
+---
 
-**Chapter 3: The Hollow Eyes**
+# Chapter 4: The Keeper
 
 The deeper Lina walked, the colder it grew. Branches clawed at her coat. The lantern drifted ahead—always just out of reach.
 
@@ -92,9 +96,9 @@ The path vanished.
 
 And the whispers began.
 
-⸻
+---
 
-**Chapter 4: The Voices Below**
+# Chapter 5: The Whispers
 
 Not just one voice, but many.
 
@@ -112,9 +116,9 @@ Ran.
 
 Blind.
 
-⸻
+---
 
-**Chapter 5: The Keeper’s Mark**
+# Chapter 6: The Aftermath
 
 The next morning, her parents found her bed empty.
 
@@ -132,9 +136,9 @@ But he noticed something strange: a faint burn mark on the phone’s screen.
 
 The shape of a lantern.
 
-⸻
+---
 
-**Chapter 6: The Whispering Woods**
+# Chapter 7: The Lantern Returns
 
 A year passed.
 
@@ -156,9 +160,9 @@ Even if you don’t return—
 
 Your whisper will.
 
-⸻
+---
 
-**Chapter 7: The Forgotten Path**
+# Chapter 8: The Forgotten Path
 
 Before she disappeared, Lina had begun researching the town’s history. In dusty archives and forgotten maps, she found mention of a trail through the woods that no longer existed—The Forgotten Path.
 
@@ -168,9 +172,9 @@ Lina was convinced the answers lay there.
 
 Her journal entries hinted at plans to find it. To confront the truth, no matter the cost.
 
-⸻
+---
 
-**Chapter 8: The Keeper’s Lament**
+# Chapter 9: The Keeper’s Curse
 
 Deeper into the woods, the whispers changed.
 
@@ -185,9 +189,9 @@ And why?
 
 The answers, Lina believed, lay at the heart of the forest.
 
-⸻
+---
 
-**Chapter 9: The Final Light**
+# Chapter 10: The Clearing
 
 She found a clearing—perfectly round, the trees circling it like silent sentinels.
 
@@ -211,9 +215,9 @@ The forest erupted in a blinding flash—
 
 Then silence.
 
-⸻
+---
 
-**Epilogue: The New Keeper**
+# Chapter 11: The Lantern’s Legacy
 
 When townsfolk returned to the woods the next day, Lina was gone.
 
