@@ -76,41 +76,28 @@ function ExploreStories() {
   const handleStoryClick = async (story) => {
     setSelectedStory(story);
     try {
-      // Fetch the story markdown from the public folder
-      const response = await fetch(`/public/stories/${story.filename}`);
+      const response = await fetch(`/src/assets/stories/${story.filename}`);
       if (!response.ok) throw new Error('Story not found');
       let text = await response.text();
 
       if (story.filename === "the-lantern-keeper.md") {
-        // Split at the first horizontal rule (---) for the description and prologue
-        const [description, ...rest] = text.split(/^-{3,}$/m);
-        // The first page is the description (remove heading if present)
-        const descPage = description.replace(/^# .+\n/, '').trim();
-        // The rest is the prologue and chapters, joined back together
-        const restPages = rest.join('\n---\n').split(/^-{3,}$/m).map(p => p.trim()).filter(Boolean);
-        // Combine for pagination: description, then prologue, then chapters
-        const pages = [descPage, ...restPages];
-        setStoryPages(pages);
-        setCurrentPage(0);
-        setShowModal(true);
-        // Optionally, set chapter titles for prologue/chapters
-        const chapters = pages.map(page => {
-          const match = page.match(/\*\*([^*]+)\*\*/); // Look for '**Title**'
-          return match ? match[1] : null;
-        });
-        setChapterTitles(chapters);
-        return;
+        text = text.replace(/^# .+\n/, ''); // Remove the first heading
+        text = text.replace(/\*\*Prologue:.*?\*\*|\*\*Chapter \d+:.*?\*\*/g, ''); // Remove subtitles like Prologue and Chapter titles
       }
-      // Default: split by chapters for other stories
+
+      // Split the story into pages by detecting '**Prologue**' or '**Chapter X**' markers
       const pages = text.split(/(?=\*\*.*?\*\*)/g).map(p => p.trim()).filter(Boolean);
+
+      // Extract chapter titles for each page
       const chapters = pages.map(page => {
-        const match = page.match(/\*\*([^*]+)\*\*/);
+        const match = page.match(/\*\*([^*]+)\*\*/); // Look for '**Title**'
         return match ? match[1] : null;
       });
+
       setStoryPages(pages);
       setCurrentPage(0);
       setShowModal(true);
-      setChapterTitles(chapters);
+      setChapterTitles(chapters); // Save chapter titles in state
     } catch (error) {
       setStoryPages(['Sorry, this story could not be loaded.']);
       setCurrentPage(0);
