@@ -4,7 +4,7 @@ Every night at 3:33 AM, a flickering lantern appears in the woods near town. Tho
 
 ---
 
-# Prologue: Whispers in the Dark
+**Prologue: Whispers in the Dark**
 
 They say it began long ago, back when the town of Black Hollow was just a scattering of cabins along the river. No one remembers the exact year—only that it started with the sound of footsteps. Soft. Slow. Steady. And always accompanied by the swaying glow of a lantern drifting through the trees.
 
@@ -14,7 +14,7 @@ And yet, every night at exactly 3:33 AM… it returns.
 
 ---
 
-# Chapter 1: The Light in the Trees
+**Chapter 1: The Light in the Trees**
 
 Seventeen-year-old Lina Harrow had grown up hearing the stories. Her grandmother used to whisper them like prayers, warning her never to look outside after midnight.
 
@@ -40,7 +40,7 @@ In its place, she found a small, soot-stained feather resting on her windowsill.
 
 ---
 
-# Chapter 2: The Dare
+**Chapter 2: The Dare**
 
 The next day at school, Lina told her best friend, Jamie. He laughed it off.
 
@@ -58,7 +58,7 @@ She set her alarm for 3:25 AM. Dressed in layers. Grabbed her phone. Slipped sil
 
 ---
 
-# Chapter 3: The Lantern’s Call
+**Chapter 3: The Lantern’s Call**
 
 At the edge of the woods, she waited.
 
@@ -74,7 +74,7 @@ Against every instinct, she followed.
 
 ---
 
-# Chapter 4: The Keeper
+**Chapter 4: The Keeper**
 
 The deeper Lina walked, the colder it grew. Branches clawed at her coat. The lantern drifted ahead—always just out of reach.
 
@@ -98,7 +98,7 @@ And the whispers began.
 
 ---
 
-# Chapter 5: The Whispers
+**Chapter 5: The Whispers**
 
 Not just one voice, but many.
 
@@ -118,7 +118,7 @@ Blind.
 
 ---
 
-# Chapter 6: The Aftermath
+**Chapter 6: The Aftermath**
 
 The next morning, her parents found her bed empty.
 
@@ -138,7 +138,7 @@ The shape of a lantern.
 
 ---
 
-# Chapter 7: The Lantern Returns
+**Chapter 7: The Lantern Returns**
 
 A year passed.
 
@@ -162,7 +162,7 @@ Your whisper will.
 
 ---
 
-# Chapter 8: The Forgotten Path
+**Chapter 8: The Forgotten Path**
 
 Before she disappeared, Lina had begun researching the town’s history. In dusty archives and forgotten maps, she found mention of a trail through the woods that no longer existed—The Forgotten Path.
 
@@ -174,7 +174,7 @@ Her journal entries hinted at plans to find it. To confront the truth, no matter
 
 ---
 
-# Chapter 9: The Keeper’s Curse
+**Chapter 9: The Keeper’s Curse**
 
 Deeper into the woods, the whispers changed.
 
@@ -191,7 +191,7 @@ The answers, Lina believed, lay at the heart of the forest.
 
 ---
 
-# Chapter 10: The Clearing
+**Chapter 10: The Clearing**
 
 She found a clearing—perfectly round, the trees circling it like silent sentinels.
 
@@ -217,7 +217,7 @@ Then silence.
 
 ---
 
-# Chapter 11: The Lantern’s Legacy
+**Chapter 11: The Lantern’s Legacy**
 
 When townsfolk returned to the woods the next day, Lina was gone.
 
@@ -234,3 +234,17 @@ But one thing is certain:
 The lantern still burns.
 
 And the whispers never stop.
+
+---
+
+**Chapter 12: Epilogue**
+
+Years later, children in Black Hollow still whisper about the lantern. Some say it’s a warning. Others, a guide. But all agree: the woods are not empty.
+
+On certain nights, if you listen closely, you might hear a voice—soft, familiar, and kind—guiding lost souls home.
+
+And if you see a golden light at 3:33 AM, remember Lina’s story.
+
+Some who follow never return.
+
+But some, at last, find their way out of the dark.
