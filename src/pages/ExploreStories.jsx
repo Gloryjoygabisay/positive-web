@@ -76,14 +76,49 @@ function ExploreStories() {
   const handleStoryClick = async (story) => {
     setSelectedStory(story);
     try {
+      if (story.filename === "the-lantern-keeper.md") {
+        // Fetch the markdown from public folder
+        const response = await fetch(`/stories/${story.filename}`);
+        if (!response.ok) throw new Error('Story not found');
+        let text = await response.text();
+
+        // Split into pages: Title+Description, Prologue, Chapters, Epilogue
+        const pages = [];
+        // 1. Title + Description (merged)
+        const titleMatch = text.match(/^# (.+)$/m);
+        const descMatch = text.match(/^# .+\n+([^\n]+)$/m);
+        if (titleMatch && descMatch) {
+          pages.push(`# ${titleMatch[1]}\n\n${descMatch[1]}`);
+        } else if (titleMatch) {
+          pages.push(`# ${titleMatch[1]}`);
+        }
+        // 2. Split by --- (section breaks)
+        const sections = text.split(/---+/g).map(s => s.trim()).filter(Boolean);
+        // Remove title/desc from first section if present
+        if (sections[0].startsWith('#')) sections.shift();
+        // Each section starts with * Prologue or * Chapter
+        for (const section of sections) {
+          if (section.startsWith('*')) {
+            // Remove the leading * and split title from body
+            const [firstLine, ...rest] = section.split('\n');
+            const title = firstLine.replace(/^\*\s*/, '').trim();
+            const body = rest.join('\n').trim();
+            pages.push(`**${title}**\n\n${body}`);
+          }
+        }
+        setStoryPages(pages);
+        setCurrentPage(0);
+        setShowModal(true);
+        setChapterTitles(pages.map(p => {
+          const match = p.match(/^\*\*([^*]+)\*\*/);
+          return match ? match[1] : null;
+        }));
+        return;
+      }
+
       const response = await fetch(`/src/assets/stories/${story.filename}`);
       if (!response.ok) throw new Error('Story not found');
       let text = await response.text();
-
-      if (story.filename === "the-lantern-keeper.md") {
-        text = text.replace(/^# .+\n/, ''); // Remove the first heading
-        text = text.replace(/\*\*Prologue:.*?\*\*|\*\*Chapter \d+:.*?\*\*/g, ''); // Remove subtitles like Prologue and Chapter titles
-      }
 
       // Split the story into pages by detecting '**Prologue**' or '**Chapter X**' markers
       const pages = text.split(/(?=\*\*.*?\*\*)/g).map(p => p.trim()).filter(Boolean);
