@@ -250,37 +250,31 @@ function ExploreStories() {
               >
                 &times;
               </button>
-              {/* Only show the image for 'The Lantern Keeper' on the first page */}
-              {selectedStory?.filename === "the-lantern-keeper.md" && currentPage === 0 && (
-                <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '1.5rem 0' }}>
-                  <h2 style={{
-                    color: '#ffcc00', // Updated to a brighter gold color
-                    fontSize: '3rem', // Increased font size for emphasis
-                    marginBottom: '1.5rem', // Added more spacing below
-                    textAlign: 'center',
-                    fontWeight: 'bold',
-                    fontFamily: 'Cinzel Decorative, serif', // Changed to a decorative serif font
-                    textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9)', // Enhanced shadow for depth
-                    letterSpacing: '0.15rem', // Increased spacing for elegance
-                  }}>
-                    The Lantern Keeper
-                  </h2>
-                  <img
-                    src="/flickering_lantern.gif"
-                    alt="Flickering Lantern"
-                    style={{ maxWidth: '320px', width: '90vw', height: 'auto', display: 'block', margin: '0 auto', borderRadius: '12px' }}
-                  />
-                </div>
+              {/* Only show the styled title for 'The Lantern Keeper' on the first page if the markdown does NOT already include a heading */}
+              {selectedStory?.filename === "the-lantern-keeper.md" && currentPage === 0 && !storyPages[0]?.startsWith('#') && (
+                <h2 style={{
+                  color: '#ffcc00',
+                  fontSize: '3rem',
+                  marginBottom: '1.5rem',
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  fontFamily: 'Cinzel Decorative, serif',
+                  textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9)',
+                  letterSpacing: '0.15rem',
+                }}>
+                  The Lantern Keeper
+                </h2>
               )}
-              {chapterTitles[currentPage] && (
+              {/* Only show chapter title for non-first pages */}
+              {chapterTitles[currentPage] && currentPage === 0 && (
                 <h2 style={{
                   marginTop: '1rem',
                   marginBottom: '1.2rem',
-                  fontSize: '100%', // Adjusted font size to 100%
+                  fontSize: '100%',
                   textAlign: 'center',
-                  color: '#ffd580', // Bright color for visibility
+                  color: '#ffd580',
                   fontWeight: 700,
-                  textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)', // Add shadow for better contrast
+                  textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
                 }}>
                   {chapterTitles[currentPage]}
                 </h2>
