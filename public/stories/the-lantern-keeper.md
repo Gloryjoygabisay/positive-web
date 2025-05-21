@@ -1,5 +1,7 @@
 # The Lantern Keeper
 
+![Flickering Lantern](/flickering_lantern.gif)
+
 Every night at 3:33 AM, a flickering lantern appears in the woods near town. Those who follow it never return—but their whispers do.
 
 ---

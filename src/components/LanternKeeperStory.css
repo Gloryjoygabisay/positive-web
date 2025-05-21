@@ -1,0 +1,15 @@
+/* Target the flickering lantern image in the story */
+.story-content img[src$="flickering_lantern.gif"] {
+  display: block;
+  margin: 1rem auto;
+  max-width: 50px;
+  width: 15vw;
+  height: auto;
+}
+
+@media (min-width: 600px) {
+  .story-content img[src$="flickering_lantern.gif"] {
+    max-width: 60px;
+    width: 10vw;
+  }
+}
