@@ -13,3 +13,16 @@
     width: 10vw;
   }
 }
+
+.story-content p {
+  margin: 1rem auto;
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+}
+
+@media (min-width: 600px) {
+  .story-content p {
+    font-size: 1.2rem;
+  }
+}

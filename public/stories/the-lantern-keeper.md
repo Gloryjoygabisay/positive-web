@@ -2,11 +2,13 @@
 
 ![Flickering Lantern](/flickering_lantern.gif)
 
+---
+
 Every night at 3:33 AM, a flickering lantern appears in the woods near town. Those who follow it never return—but their whispers do.
 
 ---
 
-* Prologue: Whispers in the Dark 
+* Prologue: Whispers in the Dark
 
 They say it began long ago, back when the town of Black Hollow was just a scattering of cabins along the river. No one remembers the exact year—only that it started with the sound of footsteps. Soft. Slow. Steady. And always accompanied by the swaying glow of a lantern drifting through the trees.
 

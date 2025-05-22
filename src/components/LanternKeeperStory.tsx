@@ -13,6 +13,7 @@ const LanternKeeperStory: React.FC = () => {
           throw new Error('Failed to fetch the story content');
         }
         const text = await response.text();
+        console.log('Fetched story content:', text);
         setStoryContent(text);
       } catch (error) {
         console.error('Error fetching story:', error);
