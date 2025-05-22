@@ -107,6 +107,7 @@ function ExploreStories() {
           }
         }
         setStoryPages(pages);
+        console.log('Story Pages:', storyPages);
         setCurrentPage(0);
         setShowModal(true);
         setChapterTitles(pages.map(p => {
@@ -130,6 +131,7 @@ function ExploreStories() {
       });
 
       setStoryPages(pages);
+      console.log('Story Pages:', storyPages);
       setCurrentPage(0);
       setShowModal(true);
       setChapterTitles(chapters); // Save chapter titles in state
@@ -200,7 +202,13 @@ function ExploreStories() {
               className="story-tile"
               key={idx}
               onClick={() => handleStoryClick(story)}
-              style={{ cursor: 'pointer', border: selectedStory?.filename === story.filename ? '2px solid #007bff' : '1px solid #ccc' }}
+              style={{
+                cursor: 'pointer',
+                border: selectedStory?.filename === story.filename ? '2px solid #007bff' : '1px solid #ccc',
+                backgroundImage: story.filename === 'the-lantern-keeper.md' ? "url('/flickering_lantern.gif')" : 'none',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
             >
               <h2>{story.title}</h2>
               <p>{story.description}</p>
@@ -250,21 +258,6 @@ function ExploreStories() {
               >
                 &times;
               </button>
-              {/* Only show the styled title for 'The Lantern Keeper' on the first page if the markdown does NOT already include a heading */}
-              {selectedStory?.filename === "the-lantern-keeper.md" && currentPage === 0 && !storyPages[0]?.startsWith('#') && (
-                <h2 style={{
-                  color: '#ffcc00',
-                  fontSize: '3rem',
-                  marginBottom: '1.5rem',
-                  textAlign: 'center',
-                  fontWeight: 'bold',
-                  fontFamily: 'Cinzel Decorative, serif',
-                  textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9)',
-                  letterSpacing: '0.15rem',
-                }}>
-                  The Lantern Keeper
-                </h2>
-              )}
               {/* Only show chapter title for non-first pages */}
               {chapterTitles[currentPage] && currentPage === 0 && (
                 <h2 style={{
