@@ -205,7 +205,7 @@ function ExploreStories() {
               style={{
                 cursor: 'pointer',
                 border: selectedStory?.filename === story.filename ? '2px solid #007bff' : '1px solid #ccc',
-                backgroundImage: story.filename === 'the-lantern-keeper.md' ? "url('/flickering_lantern.gif')" : 'none',
+                backgroundImage: story.filename === 'the-lantern-keeper.md' ? "url('/flickering_lantern.gif')" : story.filename === 'room-217-never-sleeps.md' ? "url('/217.png')" : 'none',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
