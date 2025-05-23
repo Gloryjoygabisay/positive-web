@@ -26,6 +26,7 @@ const LanternKeeperStory: React.FC = () => {
 
   return (
     <div className="story-content">
+      <h1 className="title">Prologue: Whispers in the Dark</h1>
       <ReactMarkdown>{storyContent}</ReactMarkdown>
     </div>
   );

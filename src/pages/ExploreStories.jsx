@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // 1. Import a markdown parser. We'll use react-markdown for easy rendering.
 import ReactMarkdown from 'react-markdown';
+import "../components/LanternKeeperStory.css";
 
 // 1. Array of story ideas
 const storyIdeas = [

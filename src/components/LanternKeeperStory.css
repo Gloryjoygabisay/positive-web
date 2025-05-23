@@ -26,3 +26,48 @@
     font-size: 1.2rem;
   }
 }
+
+/* Adjusting the font color and style for the title */
+.title {
+    color: #FFD700; /* Golden light color */
+    font-family: 'Georgia', serif; /* Elegant serif font */
+    font-weight: bold; /* Bold for emphasis */
+    text-align: center; /* Center alignment */
+}
+
+/* Apply consistent page styles for all stories */
+.page {
+    margin: 1rem auto;
+    padding: 1rem;
+    max-width: 800px;
+    background-color: #1a1a1a; /* Dark background for immersive reading */
+    color: #f5f5f5; /* Light text for contrast */
+    font-family: 'Georgia', serif; /* Elegant serif font */
+    line-height: 1.6;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.page h1 {
+    font-size: 1.8rem;
+    color: #FFD700; /* Golden light color for titles */
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.page p {
+    font-size: 1rem;
+    text-align: justify;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 600px) {
+    .page {
+        padding: 2rem;
+        font-size: 1.2rem;
+    }
+
+    .page h1 {
+        font-size: 2rem;
+    }
+}
