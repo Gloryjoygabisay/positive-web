@@ -198,23 +198,35 @@ function ExploreStories() {
         )}
         {/* 2. Tile layout for stories */}
         <div className="story-tiles">
-          {filteredStories.map((story, idx) => (
-            <div
-              className="story-tile"
-              key={idx}
-              onClick={() => handleStoryClick(story)}
-              style={{
-                cursor: 'pointer',
-                border: selectedStory?.filename === story.filename ? '2px solid #007bff' : '1px solid #ccc',
-                backgroundImage: story.filename === 'the-lantern-keeper.md' ? "url('/flickering_lantern.gif')" : story.filename === 'room-217-never-sleeps.md' ? "url('/217.png')" : story.filename === 'static-in-the-fog.md' ? "url('/staticfog.png')" : story.filename === 'beneath-the-birch-tree.md' ? "url('/tree.png')" : story.filename === 'the-girl-who-walks-backwards.md' ? "url('/backward.png')" : story.filename === 'the-clockmakers-curse.md' ? "url('/clock.png')" : story.filename === 'they-knocked-twice.md' ? "url('/knocked twice.png')" : story.filename === 'voices-in-the-cornfield.md' ? "url('/voiceinthecornfield.png')" : story.filename === 'the-mirror-hall-pact.md' ? "url('/mirrorhallpact.png')" : story.filename === 'the-last-broadcast.md' ? "url('/lastbroadcast.png')" : 'none',
-                backgroundSize: story.filename === 'the-clockmakers-curse.md' ? 'contain' : 'cover',
-                backgroundPosition: story.filename === 'the-clockmakers-curse.md' ? 'center' : 'center',
-              }}
-            >
-              <h2>{story.title}</h2>
-              <p>{story.description}</p>
-            </div>
-          ))}
+          {filteredStories
+            .filter(
+              (story) =>
+                story.filename === "the-last-broadcast.md" ||
+                story.filename === "the-girl-who-walks-backwards.md"
+            )
+            .map((story, idx) => (
+              <div
+                className="story-tile"
+                key={idx}
+                onClick={() => handleStoryClick(story)}
+                style={{
+                  cursor: "pointer",
+                  border:
+                    selectedStory?.filename === story.filename
+                      ? "2px solid #007bff"
+                      : "1px solid #ccc",
+                  backgroundImage:
+                    story.filename === "the-last-broadcast.md"
+                      ? "url('/lastbroadcast.png')"
+                      : "url('/backward.png')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <h2>{story.title}</h2>
+                <p>{story.description}</p>
+              </div>
+            ))}
         </div>
         {/* Modal for displaying the full story */}
         {showModal && (
