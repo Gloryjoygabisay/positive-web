@@ -32,11 +32,22 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden; /* Disable horizontal scrolling */
+  background-image: url('./assets/background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
+/* Adjust the heading style for "The Lantern Keeper" */
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-family: 'Cinzel', serif; /* Elegant serif font for a dramatic effect */
+  font-size: 3rem; /* Larger font size for emphasis */
+  color: #ffd700; /* Golden color for a mysterious glow */
+  text-align: center; /* Center the heading */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Subtle shadow for depth */
+  margin-bottom: 1rem; /* Add spacing below the heading */
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 /* Adding a shadow effect to the font to match the background */
@@ -90,8 +101,8 @@ html, body {
   font-size: 4rem;
   color: transparent;
   background: linear-gradient(to right, #ff7e5f, #feb47b);
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0 0 10px rgba(255, 255, 255, 0.8);
   animation: glow 2s infinite alternate;
   margin-bottom: 10px; /* Add spacing for 'glory' below */
@@ -146,6 +157,22 @@ html, body {
                0 0 10px rgba(255, 255, 255, 0.8), /* Glow effect */
                0 0 20px rgba(255, 255, 255, 0.6); /* Extended glow */
   margin: 0 20px 40px; /* Add spacing around the text */
+}
+
+/* Ensure the flickering lantern image is larger and centered */
+img[src$="flickering_lantern.gif"] {
+  display: block;
+  margin: 1rem auto;
+  max-width: 150px;
+  width: 30vw;
+  height: auto;
+}
+
+@media (min-width: 600px) {
+  img[src$="flickering_lantern.gif"] {
+    max-width: 200px;
+    width: 20vw;
+  }
 }
 
 @keyframes glow {
